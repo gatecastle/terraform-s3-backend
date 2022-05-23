@@ -1,6 +1,6 @@
 resource "aws_s3_bucket" "terraform_state" {
   count = length(var.environment)
-  bucket = "${var.environment[count.index].name}_${var.environment[count.index].terraform_state_bucket}"
+  bucket = "${var.environment[count.index].name}-${var.environment[count.index].terraform_state_bucket}"
 
   versioning {
     enabled = true
@@ -17,7 +17,7 @@ resource "aws_s3_bucket" "terraform_state" {
 
 resource "aws_dynamodb_table" "terraform_locks" {
   count = length(var.environment)
-  name         = "${var.environment[count.index].name}_${var.environment[count.index].terraform_lock_db}"
+  name         = "${var.environment[count.index].name}-${var.environment[count.index].terraform_lock_db}"
   billing_mode = "PAY_PER_REQUEST"
   hash_key     = "LockID"
   attribute {
