@@ -1,3 +1,12 @@
+terraform {
+  required_providers {
+    aws = {
+            source  = "hashicorp/aws"
+                  version = "~> 3.0"
+    }
+  }
+}
+
 provider "aws" {
   # The security credentials for AWS Account A.
   access_key = "{{ access_key }}"
